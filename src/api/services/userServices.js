@@ -1,25 +1,23 @@
-// userServices.js
-
 /**
- * Calcula l'edat mitjana dels usuaris proporcionats.
- * @param {Array} users - Un array d'objectes on cada objecte representa un usuari i conté una propietat `birthDate`.
- * @returns {Number} L'edat mitjana dels usuaris, o 0 si no hi ha usuaris.
+ * Calcula la edad media de los usuarios proporcionados.
+ * @param {Array} users - Un array de objetos donde cada objeto representa un usuario y contiene una propiedad `birthDate`.
+ * @returns {Number} La edad media de los usuarios, o 0 si no hay usuarios.
  */
 function calculateAverageAge(users) {
-  // Utilitza `reduce` per sumar les edats de tots els usuaris. Comença amb un total de 0.
+  // Utiliza `reduce` para sumar las edades de todos los usuarios. Comienza con un total de 0.
   const totalAge = users.reduce((acc, user) => {
-    // Converteix la data de naixement de l'usuari a un objecte `Date`.
+    // Convierte la fecha de nacimiento del usuario en un objeto `Date`.
     const birthDate = new Date(user.birthDate);
-    // Calcula l'edat de l'usuari com la diferència entre l'any actual i l'any de naixement.
-    const age = new Date().getFullYear() - birthDate.getFullYear() + 1;
-    // Afegeix l'edat de l'usuari actual al total acumulat.
+    // Calcula la edad del usuario como la diferencia entre el año actual y el año de nacimiento.
+    const age = new Date().getFullYear() - birthDate.getFullYear();
+    // Añade la edad del usuario actual al total acumulado.
     return acc + age;
   }, 0);
   
-  // Calcula l'edat mitjana dividint el total d'edats pel nombre d'usuaris.
-  // Retorna 0 si l'array d'usuaris és buit per evitar la divisió per zero.
+  // Calcula la edad media dividiendo el total de edades por el número de usuarios.
+  // Retorna 0 si el array de usuarios está vacío para evitar la división por cero.
   return users.length > 0 ? totalAge / users.length : 0;
 }
 
-// Exporta la funció `calculateAverageAge` perquè pugui ser utilitzada en altres parts de l'aplicació.
+// Exporta la función `calculateAverageAge` para que pueda ser utilizada en otras partes de la aplicación.
 module.exports = { calculateAverageAge };
